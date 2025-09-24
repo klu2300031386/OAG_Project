@@ -24,7 +24,10 @@ pipeline {
         stage('Backend Build') {
             steps {
                 dir('OAG_Backend') {
-                    bat "mvn clean package -DskipTests"
+                    bat """
+                        echo Building backend with Maven...
+                        call "${tool 'Maven_3_9_11'}/bin/mvn" clean package -DskipTests
+                    """
                 }
             }
         }
